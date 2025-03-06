@@ -1,0 +1,9 @@
+{
+	"name": "bhagidf",
+	"location": "australiasoutheast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "00e30246-a9c6-40d4-810a-0a68473fd16f",
+		"tenantId": "86fa7a7d-afbb-4899-bd24-55a019b7f701"
+	}
+}

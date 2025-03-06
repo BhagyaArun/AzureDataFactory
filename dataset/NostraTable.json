@@ -1,0 +1,55 @@
+{
+	"name": "NostraTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OutputSQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "SourceCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DrugCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Source_DrugDescription",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MasterProduct",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MasterProductName",
+				"type": "nvarchar"
+			},
+			{
+				"name": "TotalAmt",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "ScriptCnt",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "StoreCnt",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Pharmaceuticals"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,57 @@
+{
+	"name": "Nostradata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "InputBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "input_file.csv",
+				"container": "bhagi4c"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "SourceCode",
+				"type": "String"
+			},
+			{
+				"name": "DrugCode",
+				"type": "String"
+			},
+			{
+				"name": "Source_DrugDescription",
+				"type": "String"
+			},
+			{
+				"name": "MasterProduct",
+				"type": "String"
+			},
+			{
+				"name": "MasterProductName",
+				"type": "String"
+			},
+			{
+				"name": "TotalAmt",
+				"type": "String"
+			},
+			{
+				"name": "ScriptCnt",
+				"type": "String"
+			},
+			{
+				"name": "StoreCnt",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

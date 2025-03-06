@@ -1,0 +1,164 @@
+{
+	"name": "Blob2SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Nostradata CSV to SQL",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"preCopyScript": "delete from Pharmaceuticals",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SourceCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "SourceCode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "DrugCode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DrugCode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Source_DrugDescription",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Source_DrugDescription",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "MasterProduct",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MasterProduct",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "MasterProductName",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "MasterProductName",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalAmt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "TotalAmt",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 18
+								}
+							},
+							{
+								"source": {
+									"name": "ScriptCnt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ScriptCnt",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "StoreCnt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "StoreCnt",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Nostradata",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "NostraTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-02-20T03:29:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
